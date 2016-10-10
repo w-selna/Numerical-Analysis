@@ -1,0 +1,9 @@
+function z = solveeq(g,bet1,bet2,n,f,A,B) % bet* are betas,n is number of points, f is fundamental matrix,A is "A" matrix in boundry condition, B is "B" matrix in boundary condition. g as a column cell array, the g(t) vector.
+t = discinteq(n,A,B,f);
+sg = specint(n);
+xs = cos(pi/(n-1) * (0:(n-1)));
+xs = fliplr(xs);
+g_eval = [g{1,1}(xs),g{2,1}(xs)];
+v = sn*g;
+b = [v;bet1;bet2];
+z = t\b;
